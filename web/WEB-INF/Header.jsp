@@ -1,8 +1,4 @@
-<%-- 
-    Document   : Header
-    Created on : 2018-09-07, 15:17:03
-    Author     : 1895135
---%>
+
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <fmt:setLocale  value="en_EN"  />
 
@@ -22,69 +18,21 @@
         <link rel="stylesheet" type="text/css" href="styles/responsive.css">
         <link href="styles/App.css" rel="stylesheet" type="text/css"/>
         <link href="styles/styles.css" rel="stylesheet" type="text/css"/>
-
-
-
-
-
         <title><fmt:message key="header.Title" /></title>
     </head>
     <body>
         <header class="header">
             <div class="header_container">
-                <div class="container">
-                    <!--                                <div class="row">
-                                                        <div class="col">
-                                                            <div class="main_nav float-right" style="margin-top: 34px;">
-                                                                <ul>
-                                                                     connexion 
-                                                                    <li><a href="contact.html"><i class="fa fa-sign-in"></i> Connexion</a></li>
-                    
-                                                                     deconnexion 
-                    
-                                                                    <li>Hocine Krizou</li>
-                                                                    <li><a href="contact.html"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>-->
+                <div class="container">                  
                     <div class="row">
                         <div class="col">
                             <div class="header_content d-flex flex-row align-items-center justify-content-start">
-                                <div class="logo"><a href="#">SAVONDouDoux.</a></div>
-                                <!--							<nav class="main_nav">
-                                                                                                <ul>
-                                                                                                        <li class="hassubs active">
-                                                                                                                <a href="index.html">Home</a>
-                                                                                                                <ul>
-                                                                                                                        <li><a href="categories.html">Categories</a></li>
-                                                                                                                        <li><a href="product.html">Product</a></li>
-                                                                                                                        <li><a href="cart.html">Cart</a></li>
-                                                                                                                        <li><a href="checkout.html">Check out</a></li>
-                                                                                                                        <li><a href="contact.html">Contact</a></li>
-                                                                                                                </ul>
-                                                                                                        </li>
-                                                                                                        <li class="hassubs">
-                                                                                                                <a href="categories.html">Categories</a>
-                                                                                                                <ul>
-                                                                                                                        <li><a href="categories.html">Category</a></li>
-                                                                                                                        <li><a href="categories.html">Category</a></li>
-                                                                                                                        <li><a href="categories.html">Category</a></li>
-                                                                                                                        <li><a href="categories.html">Category</a></li>
-                                                                                                                        <li><a href="categories.html">Category</a></li>
-                                                                                                                </ul>
-                                                                                                        </li>
-                                                                                                        <li><a href="#">Accessories</a></li>
-                                                                                                        <li><a href="#">Offers</a></li>
-                                                                                                        <li><a href="contact.html">Contact</a></li>
-                                                                                                </ul>
-                                                                                        </nav>-->
+                                <div class="logo"><a href="#">SAVONDouDoux.</a></div>                                
                                 <nav class="main_nav">
                                     <ul>
                                         <li><a href="index.jsp"><fmt:message key="header.Home" /></a></li>
-                                        <li><a href="Catalog"><fmt:message key="header.Products" /></a></li>
-                                        <li><a href="Contact"><fmt:message key="header.Contact" /></a></li>
-                                        <!--          <li>Bienvenue Hocine - <a href="#"><i class="fa fa-sign-out"></i> Déconnexion</a></li>-->
+                                        <li><a href="Catalog.jsp"><fmt:message key="header.Products" /></a></li>
+                                        <li><a href="Contact.jsp"><fmt:message key="header.Contact" /></a></li>                                        
                                     </ul>
                                 </nav>
                                 <div class="header_extra ml-auto">
@@ -153,22 +101,18 @@
 
             <!-- Social -->
             <div class="header_social main_nav">
-                <ul>
-
+                <ul>    
                     <c:choose>
-                        <c:when test="${sessionScope.connected == true}">
-                            <li>Bienvenue ${sessionScope.clientConnecte.prenom} <a href="#"><i class="fa fa-sign-out"></i><fmt:message key="header.Deconnection" /></a></li>
-                            </c:when>
+                        <c:when test="${connected eq true}">
+                            <li><fmt:message key="header.Wellcome" /> ${clientConnecte.prenom} <a target=_blank href="index.jsp"><i class="fa fa-sign-out"></i><fmt:message key="header.Logout" /></a></li>
+                        </c:when>
                             <c:otherwise>
-                            <li><a href="Utilisteur?currentPage=/index.jsp"><i class="fa fa-sign-in"></i><fmt:message key="header.Connection" /></a></li>                                
+                            <li><a target=_blank href="User"><i class="fa fa-sign-in"></i><fmt:message key="header.Login" /></a></li>
                             </c:otherwise>
-                        </c:choose>
-
-                    <!--<li>Bienvenue Hocine - <a href="#"><i class="fa fa-sign-out"></i> Déconnexion</a></li>-->
-                    <!--<li><a href="Utilisteur?currentPage=/index.jsp"><i class="fa fa-sign-in"></i> Connexion</a></li>-->
+                    </c:choose>
                 </ul>
             </div>
-        </header>
+        </header>            
 
         <div class="menu menu_mm trans_300">
             <div class="menu_container menu_mm">
@@ -180,34 +124,21 @@
 
                     </div>
                     <ul class="page_menu_nav menu_mm">
-                        <!--					<li class="page_menu_item has-children menu_mm">
-                                                                        <a href="index.html">Home<i class="fa fa-angle-down"></i></a>
-                                                                        <ul class="page_menu_selection menu_mm">
-                                                                                <li class="page_menu_item menu_mm"><a href="categories.html">Categories<i class="fa fa-angle-down"></i></a></li>
-                                                                                <li class="page_menu_item menu_mm"><a href="product.html">Product<i class="fa fa-angle-down"></i></a></li>
-                                                                                <li class="page_menu_item menu_mm"><a href="cart.html">Cart<i class="fa fa-angle-down"></i></a></li>
-                                                                                <li class="page_menu_item menu_mm"><a href="checkout.html">Checkout<i class="fa fa-angle-down"></i></a></li>
-                                                                                <li class="page_menu_item menu_mm"><a href="contact.html">Contact<i class="fa fa-angle-down"></i></a></li>
-                                                                        </ul>
-                                                                </li>
-                                                                <li class="page_menu_item has-children menu_mm">
-                                                                        <a href="categories.html">Categories<i class="fa fa-angle-down"></i></a>
-                                                                        <ul class="page_menu_selection menu_mm">
-                                                                                <li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-                                                                                <li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-                                                                                <li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-                                                                                <li class="page_menu_item menu_mm"><a href="categories.html">Category<i class="fa fa-angle-down"></i></a></li>
-                                                                        </ul>
-                                                                </li>-->
-                        <li class="page_menu_item menu_mm"><a href="index.html">Accueil<i class="fa fa-angle-down"></i></a></li>
-                        <li class="page_menu_item menu_mm"><a href="#">Produits<i class="fa fa-angle-down"></i></a></li>
-                        <li class="page_menu_item menu_mm"><a href="contact.html">Contact<i class="fa fa-angle-down"></i></a></li>
-                        <!-- connexion -->
-                        <li class="page_menu_item menu_mm"><a href="contact.html"><i class="fa fa-sign-in"></i> Connexion</a></li>
-
+                        
+                        <li class="page_menu_item menu_mm"><a href="index.jsp"><fmt:message key="header.Home" /><i class="fa fa-angle-down"></i></a></li>
+                        <li class="page_menu_item menu_mm"><a href="Catalog.jsp"><fmt:message key="header.Products" /><i class="fa fa-angle-down"></i></a></li>
+                        <li class="page_menu_item menu_mm"><a href="Contact.jsp"><fmt:message key="header.Contact" /><i class="fa fa-angle-down"></i></a></li>
+                        
+                        <c:choose>
+                            <c:when test="${connected eq true}">
                         <!-- deconnexion -->
-                        <li class="page_menu_item menu_mm">Hocine Krizou - <a href="contact.html" style="display: inline;"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
-
+                        <li class="page_menu_item menu_mm">${clientConnecte.prenom} <a href="index.jsp" style="display: inline;"><i class="fa fa-sign-out"></i><fmt:message key="header.Logout" /></a></li>
+                            </c:when>
+                            <c:otherwise>
+                        <!-- connexion -->
+                        <li class="page_menu_item menu_mm"><a href="User"><i class="fa fa-sign-in"></i><fmt:message key="header.Login" /></a></li>
+                            </c:otherwise>                        
+                        </c:choose>
                     </ul>
                 </div>
             </div>
@@ -227,27 +158,6 @@
 
         <!-- Home -->
     </body>
-
-    <!--<script>
-         function getData(){
-                    var xmlhttp = new XMLHttpRequest();
-                    var url = "Display?searchProduct=" + document.getElementById("searchProduct").value;
-                    
-                    xmlhttp.onreadystatechange = processData;
-                    xmlhttp.open("GET",url,true);
-                    xmlhttp.send();
-                }
-                function processData(){
-                    if (this.readyState == 4 && this.status == 200) {
-                        var myObj = JSON.parse(this.responseText);
-                        for(key in myObj) {
-     document.getElementById("demo").innerHTML = document.getElementById("demo").innerHTML +"<br>"+myObj[key];
-    }
-                        
-                    }
-                }
-        
-    </script>-->
 
 </html>
 </fmt:bundle>
