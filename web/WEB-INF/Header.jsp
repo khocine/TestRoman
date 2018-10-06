@@ -3,6 +3,10 @@
     Created on : 2018-09-07, 15:17:03
     Author     : 1895135
 --%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<fmt:setLocale  value="en_EN"  />
+
+<fmt:bundle basename="messages.MessagesBundle">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -23,7 +27,7 @@
 
 
 
-        <title>JSP Page</title>
+        <title><fmt:message key="header.Title" /></title>
     </head>
     <body>
         <header class="header">
@@ -77,9 +81,9 @@
                                                                                         </nav>-->
                                 <nav class="main_nav">
                                     <ul>
-                                        <li><a href="index.jsp">Accueil</a></li>
-                                        <li><a href="Catalog">Produits</a></li>
-                                        <li><a href="Contact">Contact</a></li>
+                                        <li><a href="index.jsp"><fmt:message key="header.Home" /></a></li>
+                                        <li><a href="Catalog"><fmt:message key="header.Products" /></a></li>
+                                        <li><a href="Contact"><fmt:message key="header.Contact" /></a></li>
                                         <!--          <li>Bienvenue Hocine - <a href="#"><i class="fa fa-sign-out"></i> Déconnexion</a></li>-->
                                     </ul>
                                 </nav>
@@ -96,7 +100,7 @@
                                                   c0,7.5,6,13.5,13.5,13.5s13.5-6,13.5-13.5v-41h45.2l26.9,302.3C412.8,445.2,392.1,462,366.8,462z"/>
                                             </g>
                                             </svg>
-                                            <div>Cart <span>(${count})</span></div>
+                                            <div><fmt:message key="header.Cart" /><span>(${count})</span></div>
                                         </a>
                                     </div>
                                     <div class="search">
@@ -153,10 +157,10 @@
 
                     <c:choose>
                         <c:when test="${sessionScope.connected == true}">
-                            <li>Bienvenue ${sessionScope.clientConnecte.prenom} <a href="#"><i class="fa fa-sign-out"></i> Déconnexion</a></li>
+                            <li>Bienvenue ${sessionScope.clientConnecte.prenom} <a href="#"><i class="fa fa-sign-out"></i><fmt:message key="header.Deconnection" /></a></li>
                             </c:when>
                             <c:otherwise>
-                            <li><a href="Utilisteur?currentPage=/index.jsp"><i class="fa fa-sign-in"></i> Connexion</a></li>                                
+                            <li><a href="Utilisteur?currentPage=/index.jsp"><i class="fa fa-sign-in"></i><fmt:message key="header.Connection" /></a></li>                                
                             </c:otherwise>
                         </c:choose>
 
@@ -246,3 +250,4 @@
     </script>-->
 
 </html>
+</fmt:bundle>
